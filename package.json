@@ -1,0 +1,22 @@
+{
+  "name": "music-gist",
+  "version": "0.0.0",
+  "description": "Search for an artist or band and you’ll read & hear the gist of it.",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gnclmorais/music-gist"
+  },
+  "keywords": [
+    "music"
+  ],
+  "author": "Gonçalo Morais <gnclmorais@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gnclmorais/music-gist/issues"
+  },
+  "homepage": "https://github.com/gnclmorais/music-gist"
+}
