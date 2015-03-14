@@ -1,2 +1,2 @@
 # music-gist
-Search for an artist or band and you’ll read &amp; hear the gist of it.
+Search for an artist or band and you’ll get the gist of it.
