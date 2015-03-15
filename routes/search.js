@@ -26,8 +26,10 @@ router.get('/:name', function (req, res, next) {
         // TODO
         break;
       case 1:
+      var artist = response.artists[0];
         res.render('profile', {
-          title: name
+          title: artist.name + ' — Music Gist',
+          artist: artist
         });
         break;
       default:

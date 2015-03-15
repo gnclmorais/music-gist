@@ -2,5 +2,6 @@ extends layout
 
 block content
   h1 We found #{count} artists/bands with the name #{title}
+  ol
   each artist, index in results
-    p= index+1 + '. ' + artist.name
+    li= index+1 + '. ' + artist.name
