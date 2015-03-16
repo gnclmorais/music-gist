@@ -1,7 +1,14 @@
 extends layout
 
 block content
-  h1 We found #{count} artists/bands with the name #{title}
-  ol
-  each artist, index in results
-    li= index+1 + '. ' + artist.name
+  if count
+    h1 We found #{count} artists/bands with the name #{title}
+    ol
+      each artist, index in results
+        - var country = artist.countryName ? '(' + artist.countryName + ')' : ''
+        li
+          a(href='/artist/' + artist.id) #{artist.name}
+          if country
+            span= country
+  else
+    h1 No results found.

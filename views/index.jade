@@ -3,3 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  form(name="search", action="/search", method="post")
+      input(type="text", name="artist")
+      input(type="submit", value="search")

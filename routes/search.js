@@ -1,6 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
+router.post('/', function (req, res, next) {
+  if (req.body && req.body.artist) {
+    res.redirect(req.baseUrl + '/' + req.body.artist);
+  } else {
+    // TODO
+  }
+});
+
 /* GET search artist or band. */
 router.get('/:name', function (req, res, next) {
   var mb = req.mb;
@@ -22,9 +30,6 @@ router.get('/:name', function (req, res, next) {
     // - A single artist/bad was found -> Show its profile
     // - Several artists/bans with the same name -> Ask the user which one
     switch (response.count) {
-      case 0:
-        // TODO
-        break;
       case 1:
       var artist = response.artists[0];
         res.render('profile', {
@@ -32,7 +37,17 @@ router.get('/:name', function (req, res, next) {
           artist: artist
         });
         break;
+      case 0:
+        // TODO
       default:
+        artists = response.artists.map(function (artist) {
+          if (artist.country) {
+            var name = req.countries[artist.country].name;
+            artist.countryName = name || artist.country;
+          }
+        });
+
+
         res.render('search_results', {
           title: name,
           count: response.count,
