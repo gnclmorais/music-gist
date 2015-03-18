@@ -5,11 +5,23 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var countries  = require('country-data').countries;
+var fs = require('fs');
+var nconf = require('nconf');
+
+nconf.file({ file: 'config.json' });
 
 // get musicbrainz wrapper and initialise a client
 var nb = require('nodebrainz');
 var mb = new nb({
   userAgent:'musig-gist/0.0.1 ( https://github.com/gnclmorais/music-gist )'
+});
+
+// get Last.fm wrapper and initialise a client
+var LastFmNode = require('lastfm').LastFmNode;
+var fm = new LastFmNode({
+  api_key: nconf.get('lastfm_apikey'),
+  secret: nconf.get('lastfm_secret'),
+  useragent: 'music-gist/v0.0.1'
 });
 
 // get available routes
@@ -35,6 +47,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // make our MusicBrainz client accessible to our router
 app.use(function (req, res, next) {
     req.mb = mb;
+    req.fm = fm;
     req.countries = countries;
     next();
 });
