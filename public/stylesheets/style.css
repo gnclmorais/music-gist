@@ -5,6 +5,9 @@ body {
 a {
   color: #00b7ff;
 }
+iframe {
+  border: none;
+}
 .profile {
   max-width: 800px;
   margin: 0 auto;

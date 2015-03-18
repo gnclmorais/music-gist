@@ -4,31 +4,52 @@ block content
   .profile
     img(class='cover' src=image)
 
-    h1= name
+    h1(class=type.toLowerCase())= name
     if area
       p= area.name
 
+    .bio!= bio.summary
+
     .links
-      each link in relations
-        case link.type
-          when 'oficial homepage'
-            a(class='oficial' href=link.url.resource) Official page
-          when 'wikipedia'
-            a(class='wikipedia' href=link.url.resource) Wikipedia
-          when 'discogs'
-            a(class='discogs' href=link.url.resource) Discogs
-          when 'last.fm'
-            a(class='lastfm' href=link.url.resource) Last.fm
-          when 'soundcloud'
-            a(class='soundcloud' href=link.url.resource) SoundCloud
-          when 'youtube'
-            a(class='youtube' href=link.url.resource) YouTube
-          when 'social network'
-            if link.url.resource.indexOf('twitter.com') > -1
-              a(class='twitter' href=link.url.resource) Twitter
-            else if link.url.resource.indexOf('facebook.com') > -1
-              a(class='facebook' href=link.url.resource) Facebook
-            else
-              a(class='generic hidden' href=link.url.resource) #{link.type}
-          default
-            a(class='generic hidden' href=link.url.resource) #{link.type}
+      if relations
+        ul
+          each link in relations
+            li
+              case link.type
+                when 'oficial homepage'
+                  a(class='oficial' href=link.url.resource) Official page
+                when 'wikipedia'
+                  a(class='wikipedia' href=link.url.resource) Wikipedia
+                when 'discogs'
+                  a(class='discogs' href=link.url.resource) Discogs
+                when 'last.fm'
+                  a(class='lastfm' href=link.url.resource) Last.fm
+                when 'soundcloud'
+                  a(class='soundcloud' href=link.url.resource) SoundCloud
+                when 'youtube'
+                  a(class='youtube' href=link.url.resource) YouTube
+                when 'social network'
+                  if link.url.resource.indexOf('twitter.com') > -1
+                    a(class='twitter' href=link.url.resource) Twitter
+                  else if link.url.resource.indexOf('facebook.com') > -1
+                    a(class='facebook' href=link.url.resource) Facebook
+                  else
+                    a(class='generic hidden' href=link.url.resource) #{link.type}
+                default
+                  a(class='generic hidden' href=link.url.resource) #{link.type}
+
+    iframe(id='iframe-soundcloud'
+           src='//w.soundcloud.com/player/?url=' + play[0].url.resource)
+
+block scripts
+  script(src='/javascripts/soundcloud-widget.js')
+  script.
+    var widget;
+    var iframe = document.querySelector('#iframe-soundcloud');
+    //iframe.src = '//w.soundcloud.com/player/?url=http://api.soundcloud.com';
+
+    widget = SC.Widget(iframe);
+    //widget.load('https://soundcloud.com/tennisinc', {
+    widget.load(iframe.src, {
+      'auto_play': 1
+    });

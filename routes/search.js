@@ -32,6 +32,7 @@ router.get('/:name', function (req, res, next) {
     switch (response.count) {
       case 1:
       var artist = response.artists[0];
+        // TODO Redirect instead of render
         res.render('profile', {
           title: artist.name + ' — Music Gist',
           artist: artist

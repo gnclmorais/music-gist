@@ -54,7 +54,32 @@ router.get('/:mbid', function (req, res, next) {
       // Extend base object (Last.fm's) with MusicBrainz extra info
       var artistfm = lastfm.artist;
       artistfm.area = brainz.area;
+      console.log('Tyyype:', brainz, brainz.type);
+      artistfm.type = brainz.type;
       artistfm.relations = brainz.relations;
+
+      // Prepare links to play
+      artistfm.play = [];
+      artistfm.relations.forEach(function (link) {
+        if (link.type === 'soundcloud') {
+          artistfm.play.push(link);
+        }
+      });
+      artistfm.play = artistfm.relations.slice().sort(function (a, b) {
+        console.log(a.type + ' — ' + b.type);
+
+        switch (a.type) {
+          case 'soundcloud':
+            return 0;
+          case 'youtube':
+            return 1;
+          case 'vimeo':
+            return 2;
+          default:
+            return 100;
+        }
+      });
+      console.log('Sorted:', artistfm.play);
 
       // Get only the last (biggest) image
       artistfm.image = artistfm.image.pop()['#text'];
