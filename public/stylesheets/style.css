@@ -5,3 +5,12 @@ body {
 a {
   color: #00b7ff;
 }
+.profile {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.profile .cover {
+  width: 400px;
+  float: left;
+  margin: 0 1em 1em 0;
+}

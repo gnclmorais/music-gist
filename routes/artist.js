@@ -43,10 +43,23 @@ router.get('/:mbid', function (req, res, next) {
           }
         });
       }
-    ], function (err, res) {
-      console.log(res);
+    ], function (err, response) {
+      var brainz = response[0];
+      var lastfm = response[1];
 
-      //res.render('profile', response);
+      console.log(brainz);
+      console.log(lastfm);
+      console.log(lastfm.artist.image);
+
+      // Extend base object (Last.fm's) with MusicBrainz extra info
+      var artistfm = lastfm.artist;
+      artistfm.area = brainz.area;
+      artistfm.relations = brainz.relations;
+
+      // Get only the last (biggest) image
+      artistfm.image = artistfm.image.pop()['#text'];
+
+      res.render('profile', artistfm);
     });
   }
 });
