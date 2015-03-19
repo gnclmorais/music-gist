@@ -38,18 +38,60 @@ block content
                 default
                   a(class='generic hidden' href=link.url.resource) #{link.type}
 
-    iframe(id='iframe-soundcloud'
-           src='//w.soundcloud.com/player/?url=' + play[0].url.resource)
+    .players
+      .soundcloud
+        iframe(id='iframe-soundcloud'
+               src='//w.soundcloud.com/player/?url=http://api.soundcloud.com')
+      .vimeo
+
+      .myspace
+
+      div(id='ytplayer' class='youtube')
+        iframe(id="ytplayer"
+               type="text/html"
+               width="720"
+               height="405"
+               src="https://www.youtube.com/embed/?listType=search&list=#{name}&autoplay=1&enablejsapi=1"
+               frameborder="0"
+               allowfullscreen)
 
 block scripts
   script(src='/javascripts/soundcloud-widget.js')
   script.
-    var widget;
-    var iframe = document.querySelector('#iframe-soundcloud');
-    //iframe.src = '//w.soundcloud.com/player/?url=http://api.soundcloud.com';
+    var soundcloud = '#{play.soundcloud}';
+    var vimeo      = '#{play.vimeo}';
+    var myspace    = '#{play.myspace}';
+    var youtube    = '#{play.youtube}';
 
-    widget = SC.Widget(iframe);
-    //widget.load('https://soundcloud.com/tennisinc', {
-    widget.load(iframe.src, {
-      'auto_play': 1
-    });
+    // SoundCloud player
+    if (soundcloud) {
+      var iframe = document.querySelector('#iframe-soundcloud');
+      var widget = SC.Widget(iframe);
+      widget.load(soundcloud, {
+        'auto_play': 1
+      });
+    }
+
+    // YouTube player
+    //- if (youtube) {
+
+    //- } else {
+    //-   // Load the IFrame Player API code asynchronously.
+    //-   var tag = document.createElement('script');
+    //-   tag.src = "http://www.youtube.com/player_api";
+    //-   var firstScriptTag = document.getElementsByTagName('script')[0];
+    //-   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    //-   // Replace the 'ytplayer' element with an <iframe> and
+    //-   // YouTube player after the API code downloads.
+    //-   var player;
+    //-   function onYouTubePlayerAPIReady() {
+    //-     player = new YT.Player('ytplayer', {
+    //-       height: '390',
+    //-       width: '640',
+    //-       autoplay: true,
+    //-       listType: 'search',
+    //-       list: 'xxyyxx'
+    //-     });
+    //-   }
+    //- }

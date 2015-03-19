@@ -47,39 +47,23 @@ router.get('/:mbid', function (req, res, next) {
       var brainz = response[0];
       var lastfm = response[1];
 
-      console.log(brainz);
-      console.log(lastfm);
-      console.log(lastfm.artist.image);
-
       // Extend base object (Last.fm's) with MusicBrainz extra info
       var artistfm = lastfm.artist;
       artistfm.area = brainz.area;
-      console.log('Tyyype:', brainz, brainz.type);
       artistfm.type = brainz.type;
       artistfm.relations = brainz.relations;
 
-      // Prepare links to play
-      artistfm.play = [];
-      artistfm.relations.forEach(function (link) {
-        if (link.type === 'soundcloud') {
-          artistfm.play.push(link);
-        }
-      });
-      artistfm.play = artistfm.relations.slice().sort(function (a, b) {
-        console.log(a.type + ' — ' + b.type);
-
-        switch (a.type) {
-          case 'soundcloud':
-            return 0;
-          case 'youtube':
-            return 1;
+      // Select playable links to create player(s)
+      artistfm.play = {};
+      artistfm.relations.map(function (link) {
+        switch (link.type) {
           case 'vimeo':
-            return 2;
-          default:
-            return 100;
+          case 'myspace':
+          case 'youtube':
+          case 'soundcloud':
+            artistfm.play[link.type] = link.url.resource;
         }
       });
-      console.log('Sorted:', artistfm.play);
 
       // Get only the last (biggest) image
       artistfm.image = artistfm.image.pop()['#text'];
