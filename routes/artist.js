@@ -61,13 +61,15 @@ router.get('/:mbid', function (req, res, next) {
           case 'myspace':
           case 'youtube':
           case 'soundcloud':
-            console.log('link.type:', link.type);
             artistfm.play[link.type] = link.url.resource;
         }
       });
 
       // Get only the last (biggest) image
       artistfm.image = artistfm.image.pop()['#text'];
+
+      // Get the tags right
+      artistfm.tags = (artistfm.tags || {}).tag;
 
       res.render('profile', artistfm);
     });

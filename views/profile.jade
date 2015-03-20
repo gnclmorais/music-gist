@@ -8,6 +8,11 @@ block content
     if area
       p= area.name
 
+    .tags
+      ul
+        each tag in tags
+          li= tag.name
+
     .bio!= bio.summary
 
     .links
