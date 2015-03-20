@@ -4,7 +4,7 @@ block content
   .profile
     img(class='cover' src=image)
 
-    h1(class=type.toLowerCase())= name
+    h1(class=(type || '').toLowerCase())= name
     if area
       p= area.name
 
@@ -73,6 +73,7 @@ block scripts
     }
 
     // YouTube player
+    // TODO Only search if there is no official channel
     //- if (youtube) {
 
     //- } else {

@@ -61,6 +61,7 @@ router.get('/:mbid', function (req, res, next) {
           case 'myspace':
           case 'youtube':
           case 'soundcloud':
+            console.log('link.type:', link.type);
             artistfm.play[link.type] = link.url.resource;
         }
       });
