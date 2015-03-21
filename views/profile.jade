@@ -2,63 +2,70 @@ extends layout
 
 block content
   .profile
-    img(class='cover' src=image)
+    .section-media
+      img(class='cover' src=image)
 
-    h1(class=(type || '').toLowerCase())= name
-    if area
-      p= area.name
+      .players
+        .soundcloud
+          iframe(id='iframe-soundcloud'
+                 src='//w.soundcloud.com/player/?url=http://api.soundcloud.com')
+        .vimeo
 
-    .tags
-      ul
-        each tag in tags
-          li= tag.name
+        .myspace
 
-    .bio!= bio.summary
+        div(id='ytplayer' class='youtube')
+          iframe(id="ytplayer"
+                 type="text/html"
+                 width="720"
+                 height="405"
+                 src="https://www.youtube.com/embed/?listType=search&list=#{name}&autoplay=1&enablejsapi=1"
+                 frameborder="0"
+                 allowfullscreen)
 
-    .links
-      if relations
+    .section-info
+      h1(class=(type || '').toLowerCase())= name
+        if area
+          p= area.name
+
+      .tags
         ul
-          each link in relations
-            li
-              case link.type
-                when 'oficial homepage'
-                  a(class='oficial' href=link.url.resource) Official page
-                when 'wikipedia'
-                  a(class='wikipedia' href=link.url.resource) Wikipedia
-                when 'discogs'
-                  a(class='discogs' href=link.url.resource) Discogs
-                when 'last.fm'
-                  a(class='lastfm' href=link.url.resource) Last.fm
-                when 'soundcloud'
-                  a(class='soundcloud' href=link.url.resource) SoundCloud
-                when 'youtube'
-                  a(class='youtube' href=link.url.resource) YouTube
-                when 'social network'
-                  if link.url.resource.indexOf('twitter.com') > -1
-                    a(class='twitter' href=link.url.resource) Twitter
-                  else if link.url.resource.indexOf('facebook.com') > -1
-                    a(class='facebook' href=link.url.resource) Facebook
-                  else
+          each tag in tags
+            li= tag.name
+
+      .bio!= bio.summary
+
+      .links
+        if relations
+          ul
+            each link in relations
+              li
+                case link.type
+                  when 'oficial homepage'
+                    a(class='oficial' href=link.url.resource) Official page
+                  when 'wikipedia'
+                    a(class='wikipedia' href=link.url.resource) Wikipedia
+                  when 'discogs'
+                    a(class='discogs' href=link.url.resource) Discogs
+                  when 'last.fm'
+                    a(class='lastfm' href=link.url.resource) Last.fm
+                  when 'soundcloud'
+                    a(class='soundcloud' href=link.url.resource) SoundCloud
+                  when 'youtube'
+                    a(class='youtube' href=link.url.resource) YouTube
+                  when 'social network'
+                    if link.url.resource.indexOf('twitter.com') > -1
+                      a(class='twitter' href=link.url.resource) Twitter
+                    else if link.url.resource.indexOf('facebook.com') > -1
+                      a(class='facebook' href=link.url.resource) Facebook
+                    else
+                      a(class='generic hidden' href=link.url.resource) #{link.type}
+                  default
                     a(class='generic hidden' href=link.url.resource) #{link.type}
-                default
-                  a(class='generic hidden' href=link.url.resource) #{link.type}
 
-    .players
-      .soundcloud
-        iframe(id='iframe-soundcloud'
-               src='//w.soundcloud.com/player/?url=http://api.soundcloud.com')
-      .vimeo
 
-      .myspace
 
-      div(id='ytplayer' class='youtube')
-        iframe(id="ytplayer"
-               type="text/html"
-               width="720"
-               height="405"
-               src="https://www.youtube.com/embed/?listType=search&list=#{name}&autoplay=1&enablejsapi=1"
-               frameborder="0"
-               allowfullscreen)
+
+
 
 block scripts
   script(src='/javascripts/soundcloud-widget.js')
