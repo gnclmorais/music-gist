@@ -6,33 +6,35 @@ block content
       img(class='cover' src=image)
 
       .players
-        .soundcloud
-          iframe(id='iframe-soundcloud'
-                 src='//w.soundcloud.com/player/?url=http://api.soundcloud.com')
-        .vimeo
-
-        .myspace
-
-        div(id='ytplayer' class='youtube')
-          iframe(id="ytplayer"
-                 type="text/html"
-                 width="720"
-                 height="405"
-                 src="https://www.youtube.com/embed/?listType=search&list=#{name}&autoplay=1&enablejsapi=1"
-                 frameborder="0"
-                 allowfullscreen)
+        ul(class='tabs')
+          each val, index in play
+            li(class='#{index}')
+              a(href='#' class='tab-#{index}')
+        .tab-content
+          if play.soundcloud
+            .soundcloud
+              iframe(id='iframe-soundcloud'
+                     src='//w.soundcloud.com/player/?url=http://api.soundcloud.com')
+          div(id='ytplayer' class='youtube video-container')
+            iframe(id="ytplayer"
+                   type="text/html"
+                   width="720"
+                   height="405"
+                   src="https://www.youtube.com/embed/?listType=search&list=#{name}&autoplay=1&enablejsapi=1"
+                   frameborder="0"
+                   allowfullscreen)
 
     .section-info
       h1(class=(type || '').toLowerCase())= name
-        if area
-          p= area.name
+      if area
+        p= area.name
 
       .tags
         ul
           each tag in tags
-            li= tag.name
+            li(class='label')= tag.name
 
-      .bio!= bio.summary
+      p.bio!= bio.summary
 
       .links
         if relations

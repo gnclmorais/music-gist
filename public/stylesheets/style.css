@@ -1,30 +1,70 @@
+html,
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+}
+body {
+  padding: 0 50px;
+  margin: 0;
+  font: 18px 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  colour: #333;
+  background: #333;
 }
 a {
-  color: #00b7ff;
+  color: #95afba;
 }
 iframe {
   border: none;
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.label {
+  display: inline;
+  color: #fff;
+  background: #95afba;
+  padding: 0 5px 3px;
+  margin: 0 5px 0 0;
+  border-radius: 2px;
+  line-height: 1.7;
+}
 .profile {
-  max-width: 800px;
+  height: 100%;
+  width: 800px;
   margin: 0 auto;
+  background: #fff;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: stretch;
+  align-content: center;
 /**
    * Main sections: media & info.
    */
 /**
    * Subsections.
    */
+/**
+   * Players
+   */
+/**
+   * Responsive YouTube videos as found on:
+   * http://avexdesigns.com/responsive-youtube-embed/
+   */
 }
 .profile .section-media,
 .profile .section-info {
-  width: 50%;
-  float: left;
+  padding-top: 10px;
+  flex-grow: 1;
+}
+.profile .section-media {
+  padding-right: 10px;
 }
 .profile .section-info {
-  padding-left: 20px;
+  padding-left: 10px;
+  flex-shrink: 2;
 }
 .profile .cover {
   width: 100%;
@@ -36,4 +76,23 @@ iframe {
 }
 .profile .links li {
   list-style-type: none;
+}
+.profile .players .soundcloud iframe {
+  width: 100%;
+}
+.profile .video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+.profile .video-container iframe,
+.profile .video-container object,
+.profile .video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
