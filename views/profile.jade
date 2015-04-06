@@ -55,28 +55,40 @@ block content
           ul
             each link in relations
               li
+                - var linksHref = link.url.resource
                 case link.type
                   when 'oficial homepage'
-                    a(class='oficial' href=link.url.resource) Official page
+                    - var linksClasses = 'official'
+                    - var linksType = 'Official page'
                   when 'wikipedia'
-                    a(class='wikipedia' href=link.url.resource) Wikipedia
+                    - var linksClasses = 'wikipedia'
+                    - var linksType = 'Wikipedia'
                   when 'discogs'
-                    a(class='discogs' href=link.url.resource) Discogs
+                    - var linksClasses = 'discogs'
+                    - var linksType = 'Discogs'
                   when 'last.fm'
-                    a(class='lastfm' href=link.url.resource) Last.fm
+                    - var linksClasses = 'lastfm'
+                    - var linksType = 'Last.fm'
                   when 'soundcloud'
-                    a(class='soundcloud' href=link.url.resource) SoundCloud
+                    - var linksClasses = 'soundcloud'
+                    - var linksType = 'SoundCloud'
                   when 'youtube'
-                    a(class='youtube' href=link.url.resource) YouTube
+                    - var linksClasses = 'youtube'
+                    - var linksType = 'YouTube'
                   when 'social network'
                     if link.url.resource.indexOf('twitter.com') > -1
-                      a(class='twitter' href=link.url.resource) Twitter
+                      - var linksClasses = 'twitter'
+                      - var linksType = 'Twitter'
                     else if link.url.resource.indexOf('facebook.com') > -1
-                      a(class='facebook' href=link.url.resource) Facebook
+                      - var linksClasses = 'facebook'
+                      - var linksType = 'Facebook'
                     else
-                      a(class='generic hidden' href=link.url.resource) #{link.type}
+                      - var linksClasses = 'generic hidden'
+                      - var linksType = link.type
                   default
-                    a(class='generic hidden' href=link.url.resource) #{link.type}
+                    - var linksClasses = 'generic hidden'
+                    - var linksType = link.type
+                a(class='#{linksClasses}' href=linksHref) #{linksType}
 
 
 
