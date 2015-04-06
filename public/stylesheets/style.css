@@ -71,6 +71,8 @@ h1 {
 /**
    * Main sections: media & info.
    */
+/** Main title */
+/** Country of origin */
 /**
    * Subsections.
    */
@@ -90,8 +92,20 @@ h1 {
   padding-right: 10px;
 }
 .profile .section-info {
-  padding: 10px 10px 0;
+  padding: 10px;
   flex-shrink: 2;
+}
+.profile .main-title .fa-user,
+.profile .main-title .fa-users {
+  font-size: 75%;
+  padding-left: 10px;
+  opacity: 0.75;
+  color: #95afba;
+}
+.profile .origin img {
+  position: relative;
+  top: 2px;
+  margin-right: 5px;
 }
 .profile .cover {
   width: 100%;
@@ -103,6 +117,14 @@ h1 {
 }
 .profile .links {
   text-transform: capitalize;
+}
+.profile .links ul {
+  -webkit-column-gap: 20px;
+  -webkit-column-count: 4;
+  -moz-column-gap: 20px;
+  -moz-column-count: 4;
+  column-gap: 20px;
+  column-count: 4;
 }
 .profile .links li {
   list-style-type: none;

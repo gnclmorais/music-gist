@@ -21,8 +21,24 @@
     padding-right: 10px
 
   .section-info
-    padding: 10px 10px 0
+    padding: 10px
     flex-shrink: 2
+
+  /** Main title */
+  .main-title
+    .fa-user,
+    .fa-users
+      font-size: 75%
+      padding-left: 10px
+      opacity: .75
+      color: colour-compl-dark
+
+  /** Country of origin */
+  .origin
+    img
+      position: relative
+      top: 2px
+      margin-right: 5px
 
   /**
    * Subsections.
@@ -37,6 +53,14 @@
 
   .links
     text-transform: capitalize
+
+    ul
+      -webkit-column-gap: 20px
+      -webkit-column-count: 4
+      -moz-column-gap: 20px
+      -moz-column-count: 4
+      column-gap: 20px
+      column-count: 4
 
     li
       list-style-type: none

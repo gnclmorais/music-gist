@@ -31,22 +31,23 @@ block content
     .section-info
       //- Check if solo artist or band (normalise type first)
       -var ntype = (type || '').toLowerCase();
-      h1(class=ntype)= name
+      h1(class="#{ntype} main-title")= name
         if type
           i(class="fa fa-#{ntype === 'person' ? 'user' : 'users'}"
             title="#{ntype === 'person' ? 'Artist' : 'Band'}")
       //- Country of origin
       if area
-        p
+        p.origin
           if area.iso_3166_1_codes && area.iso_3166_1_codes.length
             img(src='/images/flags/#{area.iso_3166_1_codes}.png')
           = area.name
-
-      .tags
-        ul
-          each tag in tags
-            li(class='label')= tag.name
-
+      //- Tags/genres
+      if tags && tags.length
+        .tags
+          ul
+            each tag in tags
+              li(class='label')= tag.name
+      //- Biography
       p.bio!= bio.summary
 
       .links
