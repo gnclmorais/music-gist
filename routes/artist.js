@@ -58,7 +58,7 @@ router.get('/:mbid', function (req, res, next) {
       artistfm.relations.map(function (link) {
         switch (link.type) {
           case 'vimeo':
-          case 'myspace':
+          //case 'myspace':
           case 'youtube':
           case 'soundcloud':
             artistfm.play[link.type] = link.url.resource;
@@ -69,8 +69,9 @@ router.get('/:mbid', function (req, res, next) {
       artistfm.image = artistfm.image.pop()['#text'];
 
       // Get the tags right
-      artistfm.tags = (artistfm.tags || {}).tag;
+      artistfm.tags = (artistfm.tags || {}).tag || {};
 
+      artistfm.title = artistfm.name;
       res.render('profile', artistfm);
     });
   }

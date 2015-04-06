@@ -1,17 +1,18 @@
-html,
 body
-  height: 100%
-
-body
-  padding: 0 50px
   margin: 0
   font: 18px 'Source Sans Pro', Helvetica, Arial, sans-serif
   font-weight: 300
-  colour: colour-main-dark
+  color: colour-main-dark
   background: colour-main-dark
+  // Flex:
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
 a
   color: colour-compl-dark
+  &.fa
+    text-decoration: none
 
 iframe
   border: none
@@ -20,3 +21,20 @@ ul
   list-style-type: none
   margin: 0
   padding: 0
+
+/**
+ * Normaliser replacements
+ */
+h1
+  margin-top: 0
+
+/**
+ * Utils
+ */
+.framer
+  width: 800px
+  margin: 0 auto
+
+.content
+  flex-grow: 2
+  background: colour-main-light

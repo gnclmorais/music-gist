@@ -7,9 +7,13 @@ block content
 
       .players
         ul(class='tabs')
+          //- Show our preferred media players, only 1 active at a time
           each val, index in play
             li(class='#{index}')
-              a(href='#' class='tab-#{index}')
+              a(href='#' class='tab-#{index} fa fa-#{index}')
+          //- Always load YouTube search (last playing resourt)
+          li(class='youtube-search')
+            a(href='#' class='tab-youtube fa fa-youtube-play')
         .tab-content
           if play.soundcloud
             .soundcloud
@@ -25,9 +29,18 @@ block content
                    allowfullscreen)
 
     .section-info
-      h1(class=(type || '').toLowerCase())= name
+      //- Check if solo artist or band (normalise type first)
+      -var ntype = (type || '').toLowerCase();
+      h1(class=ntype)= name
+        if type
+          i(class="fa fa-#{ntype === 'person' ? 'user' : 'users'}"
+            title="#{ntype === 'person' ? 'Artist' : 'Band'}")
+      //- Country of origin
       if area
-        p= area.name
+        p
+          if area.iso_3166_1_codes && area.iso_3166_1_codes.length
+            img(src='/images/flags/#{area.iso_3166_1_codes}.png')
+          = area.name
 
       .tags
         ul
