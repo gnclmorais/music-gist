@@ -1,0 +1,45 @@
+/**
+ *  ____    ____
+ *  `MM'    `MM'
+ *   MM      MM
+ *   MM      MM   _____   ___  __    __     ____
+ *   MM      MM  6MMMMMb  `MM 6MMb  6MMb   6MMMMb
+ *   MMMMMMMMMM 6M'   `Mb  MM69 `MM69 `Mb 6M'  `Mb
+ *   MM      MM MM     MM  MM'   MM'   MM MM    MM
+ *   MM      MM MM     MM  MM    MM    MM MMMMMMMM
+ *   MM      MM MM     MM  MM    MM    MM MM
+ *   MM      MM YM.   ,M9  MM    MM    MM YM    d9
+ *  _MM_    _MM_ YMMMMM9  _MM_  _MM_  _MM_ YMMMM9
+ * Home
+ */
+
+.home,
+& form
+  text-align: center
+
+.home
+  form
+    &:hover,
+    &:active
+      .write
+        border: 1px solid colour-compl-light
+      .submit
+        background: colour-compl-light
+
+  // Remove all characterisation
+  .write,
+  .submit
+    height: 40px
+    margin: 0
+    padding: 0
+    border: 0
+    box-sizing: border-box
+
+  // Text input
+  .write
+    padding: 0 10px
+    border: 1px solid colour-neutral
+
+  // Submit input
+  .submit
+    background: colour-neutral

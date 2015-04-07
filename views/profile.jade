@@ -24,10 +24,11 @@ block content
                    type="text/html"
                    width="720"
                    height="405"
-                   src="https://www.youtube.com/embed/?listType=search&list=#{name}&autoplay=1&enablejsapi=1"
+                   src="https://www.youtube.com/embed/?listType=search&list=#{name}&autoplay=0&enablejsapi=1"
                    frameborder="0"
                    allowfullscreen)
 
+    //- Info section: Name, country, genres, bio...
     .section-info
       //- Check if solo artist or band (normalise type first)
       -var ntype = (type || '').toLowerCase();
@@ -60,35 +61,47 @@ block content
                   when 'oficial homepage'
                     - var linksClasses = 'official'
                     - var linksType = 'Official page'
+                    - var linksIcon = 'external-link'
                   when 'wikipedia'
                     - var linksClasses = 'wikipedia'
                     - var linksType = 'Wikipedia'
+                    - var linksIcon = 'external-link'
                   when 'discogs'
                     - var linksClasses = 'discogs'
                     - var linksType = 'Discogs'
+                    - var linksIcon = 'external-link'
                   when 'last.fm'
                     - var linksClasses = 'lastfm'
                     - var linksType = 'Last.fm'
+                    - var linksIcon = linksClasses
                   when 'soundcloud'
                     - var linksClasses = 'soundcloud'
                     - var linksType = 'SoundCloud'
+                    - var linksIcon = linksClasses
                   when 'youtube'
                     - var linksClasses = 'youtube'
                     - var linksType = 'YouTube'
+                    - var linksIcon = linksClasses
                   when 'social network'
                     if link.url.resource.indexOf('twitter.com') > -1
                       - var linksClasses = 'twitter'
                       - var linksType = 'Twitter'
+                      - var linksIcon = linksClasses
                     else if link.url.resource.indexOf('facebook.com') > -1
                       - var linksClasses = 'facebook'
                       - var linksType = 'Facebook'
+                      - var linksIcon = linksClasses
                     else
                       - var linksClasses = 'generic hidden'
                       - var linksType = link.type
+                      - var linksIcon = 'external-link'
                   default
                     - var linksClasses = 'generic hidden'
                     - var linksType = link.type
-                a(class='#{linksClasses}' href=linksHref) #{linksType}
+                    - var linksIcon = 'external-link'
+                a(class='#{linksClasses}' href=linksHref)
+                  i(class='fa fa-#{linksIcon}')
+                  | #{linksType}
 
 
 
@@ -96,6 +109,7 @@ block content
 
 
 block scripts
+  script(src='/javascripts/zepto.min.js')
   script(src='/javascripts/soundcloud-widget.js')
   script.
     var soundcloud = '#{play.soundcloud}';
@@ -108,9 +122,29 @@ block scripts
       var iframe = document.querySelector('#iframe-soundcloud');
       var widget = SC.Widget(iframe);
       widget.load(soundcloud, {
-        'auto_play': 1
+        'auto_play': 0
       });
     }
+
+    // Load the first player
+    $('.tabs li').first().addClass('active');
+    $('.tab-content > div').first().addClass('active');
+
+    // Set up tab interation
+    $('.tabs li').on('click', function () {
+      var turnOn = 'active';
+      var turnOnEl = '.' + turnOn;
+
+      var index = $(this).index() + 1;
+      if (index > 0) {
+        // Activate the right tab
+        $('.tabs').find(turnOnEl).removeClass(turnOn);
+        $(this).addClass(turnOn);
+        // Activate the right tab content
+        $('.tab-content').find(turnOnEl).removeClass(turnOn);
+        $('.tab-content > div:nth-child(' + index + ')').addClass(turnOn);
+      }
+    });
 
     // YouTube player
     // TODO Only search if there is no official channel

@@ -3,9 +3,15 @@ extends layout
 block scripts
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .home
+    h1= title
+    p Search for an artist or band you don&lsquo; know
+      | and you&lsquo;ll get the gist of it.
 
-  form(name="search", action="/search", method="post")
-      input(type="text", name="artist", autofocus)
-      input(type="submit", value="search")
+    form(name="search", action="/search", method="post")
+        input(type="text"
+              name="artist"
+              placeholder="Band or artist"
+              class="write"
+              autofocus)
+        input(type="submit", value="search", class="submit")

@@ -1,3 +1,7 @@
+html,
+body {
+  height: 100%;
+}
 body {
   margin: 0;
   font: 18px 'Source Sans Pro', Helvetica, Arial, sans-serif;
@@ -14,6 +18,9 @@ a {
 a.fa {
   text-decoration: none;
 }
+a:hover {
+  color: #333;
+}
 iframe {
   border: none;
 }
@@ -21,6 +28,10 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+textarea,
+input {
+  outline: none;
 }
 h1 {
   margin-top: 0;
@@ -60,6 +71,39 @@ h1 {
 }
 .tabs li:not(.active):hover a {
   color: #333;
+}
+.tab-content > * {
+  display: none;
+}
+.tab-content .active {
+  display: block;
+}
+.home,
+form {
+  text-align: center;
+}
+.home form:hover .write,
+.home form:active .write {
+  border: 1px solid #d5e1a3;
+}
+.home form:hover .submit,
+.home form:active .submit {
+  background: #d5e1a3;
+}
+.home .write,
+.home .submit {
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+.home .write {
+  padding: 0 10px;
+  border: 1px solid #bdc4a7;
+}
+.home .submit {
+  background: #bdc4a7;
 }
 .profile {
   height: 100%;
@@ -119,15 +163,21 @@ h1 {
   text-transform: capitalize;
 }
 .profile .links ul {
-  -webkit-column-gap: 20px;
-  -webkit-column-count: 4;
-  -moz-column-gap: 20px;
-  -moz-column-count: 4;
-  column-gap: 20px;
-  column-count: 4;
+  -webkit-column-gap: 10px;
+  -webkit-column-count: 3;
+  -moz-column-gap: 10px;
+  -moz-column-count: 3;
+  column-gap: 10px;
+  column-count: 3;
 }
 .profile .links li {
   list-style-type: none;
+}
+.profile .links i {
+  width: 15px;
+  font-size: 75%;
+  text-align: center;
+  margin-right: 3px;
 }
 .profile .players .soundcloud iframe {
   width: 100%;

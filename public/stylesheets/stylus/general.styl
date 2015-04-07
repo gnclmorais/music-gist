@@ -1,3 +1,7 @@
+html,
+body
+  height: 100%
+
 body
   margin: 0
   font: 18px 'Source Sans Pro', Helvetica, Arial, sans-serif
@@ -13,6 +17,8 @@ a
   color: colour-compl-dark
   &.fa
     text-decoration: none
+  &:hover
+    color: colour-main-dark
 
 iframe
   border: none
@@ -21,6 +27,11 @@ ul
   list-style-type: none
   margin: 0
   padding: 0
+
+textarea,
+input
+  outline: none
+
 
 /**
  * Normaliser replacements
