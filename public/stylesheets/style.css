@@ -43,6 +43,10 @@ h1,
 h2 {
   margin-top: 0;
 }
+h2 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
 .framer {
   width: 800px;
   margin: 0 auto;
@@ -55,6 +59,7 @@ h2 {
 }
 .main-title {
   height: 1em;
+  cursor: default;
   color: transparent;
   background-image: url("/images/music-gist-logo.svg");
   background-size: contain;
@@ -80,14 +85,18 @@ h2 {
 }
 .tabs a {
   padding: 5px 10px;
-  color: #fff;
+  color: #bdc4a7;
 }
 .tabs li {
-  background: #95afba;
+  height: 2em;
+  box-sizing: border-box;
+  border-bottom: 0 solid #333;
+  transition: border-bottom 0.3s ease;
 }
 .tabs li.active {
-  background: #333;
+  border-bottom: 5px solid #333;
 }
+.tabs li.active a,
 .tabs li:not(.active):hover a {
   color: #333;
 }
@@ -151,6 +160,12 @@ form {
 .home .form-search {
   margin-bottom: 3em;
 }
+header h1 {
+  float: left;
+}
+header .form-search {
+  float: right;
+}
 .profile {
   height: 100%;
   display: flex;
@@ -158,6 +173,7 @@ form {
   justify-content: space-around;
   align-items: stretch;
   align-content: center;
+/** Artist/badn name */
 /**
    * Main sections: media & info.
    */
@@ -173,6 +189,11 @@ form {
    * Responsive YouTube videos as found on:
    * http://avexdesigns.com/responsive-youtube-embed/
    */
+}
+.profile h2 i {
+  color: #95afba;
+  margin-left: 0.3em;
+  font-size: 0.75em;
 }
 .profile .section-media,
 .profile .section-info {
@@ -244,9 +265,17 @@ form {
   width: 100%;
   height: 100%;
 }
-header h1 {
-  float: left;
+footer {
+  color: #fff;
+  text-align: center;
+  padding: 1em 0;
+/** Better link colours */
+/** Better positioning for the GitHub icon */
 }
-header .form-search {
-  float: right;
+footer a:hover {
+  color: #fff;
+}
+footer .fa-github {
+  position: relative;
+  top: 1px;
 }

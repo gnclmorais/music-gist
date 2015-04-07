@@ -1,6 +1,18 @@
 /**
  * Profile page of an artist/band.
  */
+
+/** Header */
+header
+  /** Title bar */
+  h1
+    float: left
+
+  /** Search bar */
+  .form-search
+    float: right
+
+/** Contet */
 .profile
   height: 100%
   // Flex settings:
@@ -9,6 +21,14 @@
   justify-content: space-around
   align-items: stretch
   align-content: center
+
+  /** Artist/badn name */
+  h2
+    /** Single artist or band - icon */
+    i
+      color: colour-compl-dark
+      margin-left: 0.3em
+      font-size: 0.75em
 
   /**
    * Main sections: media & info.
@@ -71,7 +91,6 @@
       text-align: center
       margin-right: 3px
 
-
   /**
    * Players
    */
@@ -98,13 +117,3 @@
       left: 0
       width: 100%
       height: 100%
-
-/** Header */
-header
-  /** Title bar */
-  h1
-    float: left
-
-  /** Search bar */
-  .form-search
-    float: right
