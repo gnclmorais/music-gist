@@ -18,28 +18,21 @@
   text-align: center
 
 .home
-  form
-    &:hover,
-    &:active
-      .write
-        border: 1px solid colour-compl-light
-      .submit
-        background: colour-compl-light
+  font-size: 2em
+  color: colour-main-light
+  background: colour-main-dark
+  display: flex
+  flex-grow: 2
+  flex-direction: column
+  justify-content: center
 
-  // Remove all characterisation
-  .write,
-  .submit
-    height: 40px
-    margin: 0
-    padding: 0
-    border: 0
-    box-sizing: border-box
+  h1
+    margin-bottom: 0
+    background-position: center
 
-  // Text input
-  .write
-    padding: 0 10px
-    border: 1px solid colour-neutral
+  p
+    color: colour-neutral
+    font-size: 0.75em
 
-  // Submit input
-  .submit
-    background: colour-neutral
+  .form-search
+    margin-bottom: 3em

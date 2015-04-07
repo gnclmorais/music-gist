@@ -12,6 +12,12 @@ body {
   flex-direction: column;
   align-items: stretch;
 }
+header {
+  padding-top: 2em;
+}
+header h1 {
+  background-position: left;
+}
 a {
   color: #95afba;
 }
@@ -33,7 +39,8 @@ textarea,
 input {
   outline: none;
 }
-h1 {
+h1,
+h2 {
   margin-top: 0;
 }
 .framer {
@@ -41,8 +48,20 @@ h1 {
   margin: 0 auto;
 }
 .content {
-  flex-grow: 2;
   background: #fff;
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+}
+.main-title {
+  height: 1em;
+  color: transparent;
+  background-image: url("/images/music-gist-logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.main-title.white {
+  background-image: url("/images/music-gist-logo-white.svg");
 }
 .label {
   float: left;
@@ -78,32 +97,59 @@ h1 {
 .tab-content .active {
   display: block;
 }
-.home,
-form {
-  text-align: center;
+.form-search {
+  color: #333;
 }
-.home form:hover .write,
-.home form:active .write {
+.form-search:hover .write,
+.form-search:active .write {
   border: 1px solid #d5e1a3;
 }
-.home form:hover .submit,
-.home form:active .submit {
-  background: #d5e1a3;
+.form-search:hover .search,
+.form-search:active .search {
+  background-color: #d5e1a3;
 }
-.home .write,
-.home .submit {
-  height: 40px;
+.form-search .write,
+.form-search .search {
+  height: 2em;
   margin: 0;
   padding: 0;
   border: 0;
   box-sizing: border-box;
 }
-.home .write {
+.form-search .write {
+  min-width: 15em;
   padding: 0 10px;
   border: 1px solid #bdc4a7;
+  transition: border 0.3s ease;
 }
-.home .submit {
+.form-search .search {
+  width: 2em;
   background: #bdc4a7;
+  transition: background-color 0.3s ease;
+}
+.home,
+form {
+  text-align: center;
+}
+.home {
+  font-size: 2em;
+  color: #fff;
+  background: #333;
+  display: flex;
+  flex-grow: 2;
+  flex-direction: column;
+  justify-content: center;
+}
+.home h1 {
+  margin-bottom: 0;
+  background-position: center;
+}
+.home p {
+  color: #bdc4a7;
+  font-size: 0.75em;
+}
+.home .form-search {
+  margin-bottom: 3em;
 }
 .profile {
   height: 100%;
@@ -197,4 +243,10 @@ form {
   left: 0;
   width: 100%;
   height: 100%;
+}
+header h1 {
+  float: left;
+}
+header .form-search {
+  float: right;
 }

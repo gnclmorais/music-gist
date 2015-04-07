@@ -13,6 +13,12 @@ body
   flex-direction: column;
   align-items: stretch;
 
+header
+  padding-top: 2em
+
+  h1
+    background-position: left
+
 a
   color: colour-compl-dark
   &.fa
@@ -36,7 +42,8 @@ input
 /**
  * Normaliser replacements
  */
-h1
+h1,
+h2
   margin-top: 0
 
 /**
@@ -47,5 +54,7 @@ h1
   margin: 0 auto
 
 .content
-  flex-grow: 2
   background: colour-main-light
+  display: flex
+  flex-grow: 2
+  flex-direction: column

@@ -2,6 +2,18 @@
  * Components file.
  */
 
+/** Titles */
+.main-title
+  height: 1em;
+  color: transparent
+  background-image: url('/images/music-gist-logo.svg')
+  background-size: contain
+  background-repeat: no-repeat
+
+  &.white
+    background-image: url('/images/music-gist-logo-white.svg')
+
+
 /**
  * Labels
  */
@@ -34,9 +46,41 @@
     &:not(.active):hover a
       color: colour-main-dark
 
-
 .tab-content
   > *
     display: none
   .active
     display: block
+
+/** Search form */
+.form-search
+  color: colour-main-dark
+
+  &:hover,
+  &:active
+    .write
+      border: 1px solid colour-compl-light
+    .search
+      background-color: colour-compl-light
+
+  // Remove all characterisation
+  .write,
+  .search
+    height: 2em
+    margin: 0
+    padding: 0
+    border: 0
+    box-sizing: border-box
+
+  // Text input
+  .write
+    min-width: 15em;
+    padding: 0 10px
+    border: 1px solid colour-neutral
+    transition: border transition-default ease
+
+  // Search/submit button
+  .search
+    width: 2em
+    background: colour-neutral
+    transition: background-color transition-default ease

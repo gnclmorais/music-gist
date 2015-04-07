@@ -1,5 +1,8 @@
 extends layout
 
+block header
+  include ./includes/header.jade
+
 block content
   .profile
     .section-media
@@ -11,9 +14,10 @@ block content
           each val, index in play
             li(class='#{index}')
               a(href='#' class='tab-#{index} fa fa-#{index}')
-          //- Always load YouTube search (last playing resourt)
-          li(class='youtube-search')
-            a(href='#' class='tab-youtube fa fa-youtube-play')
+          //- Load YouTube search if don't has a YouTube channel
+          if !play.youtube
+            li(class='youtube-search')
+              a(href='#' class='tab-youtube fa fa-youtube-play')
         .tab-content
           if play.soundcloud
             .soundcloud
@@ -32,7 +36,7 @@ block content
     .section-info
       //- Check if solo artist or band (normalise type first)
       -var ntype = (type || '').toLowerCase();
-      h1(class="#{ntype} main-title")= name
+      h2(class="#{ntype}")= name
         if type
           i(class="fa fa-#{ntype === 'person' ? 'user' : 'users'}"
             title="#{ntype === 'person' ? 'Artist' : 'Band'}")

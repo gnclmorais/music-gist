@@ -2,16 +2,15 @@ extends layout
 
 block scripts
 
+block header
+  header.framer
+    h1 Music Gist
+
 block content
   .home
-    h1= title
-    p Search for an artist or band you don&lsquo; know
-      | and you&lsquo;ll get the gist of it.
+    h1.main-title.white= title
+    p Search for an artist or band you don&rsquo;t know
+      | <br>
+      | and you&rsquo;ll get the gist of it.
 
-    form(name="search", action="/search", method="post")
-        input(type="text"
-              name="artist"
-              placeholder="Band or artist"
-              class="write"
-              autofocus)
-        input(type="submit", value="search", class="submit")
+    include ./includes/search.jade
