@@ -53,6 +53,11 @@ router.get('/:mbid', function (req, res, next) {
       artistfm.type = brainz.type;
       artistfm.relations = brainz.relations;
 
+      // Trim the annoying dot at the end of the bio
+      if (artistfm.bio && artistfm.bio.summary) {
+        artistfm.bio.summary = artistfm.bio.summary.trim().slice(0, -1);
+      }
+
       // Select playable links to create player(s)
       artistfm.play = {};
       artistfm.relations.map(function (link) {

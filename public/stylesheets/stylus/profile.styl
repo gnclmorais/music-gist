@@ -22,6 +22,10 @@ header
   align-items: stretch
   align-content: center
 
+  /** Hide Last.fm link (it's a bit annoying) */
+  a[href^='http://www.last.fm/music/']
+    display: none
+
   /** Artist/badn name */
   h2
     /** Single artist or band - icon */

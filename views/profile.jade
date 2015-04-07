@@ -14,7 +14,7 @@ block content
           each val, index in play
             li(class='#{index}')
               a(href='#' class='tab-#{index} fa fa-#{index}')
-          //- Load YouTube search if don't has a YouTube channel
+          //- Loads YouTube search if doesn't have a YouTube channel
           if !play.youtube
             li(class='youtube-search')
               a(href='#' class='tab-youtube fa fa-youtube-play')

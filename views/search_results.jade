@@ -4,16 +4,18 @@ block header
   include ./includes/header.jade
 
 block content
-  if count
-    h2 We found&nbsp;
-      span(class="artist-number")= count
-      | &nbsp;artists/bands with the name&nbsp;
-      span(class="artist-name")= title
-    ol: each artist, index in results
-      - var country = artist.countryName ? '(' + artist.countryName + ')' : ''
-      li
-        a(href='/artist/' + artist.id) #{artist.name}
-        if country
-          span= country
-  else
-    h1 No results found.
+  .wrapper-search
+    if count
+      h2 We found&nbsp;
+        span(class="artist-number")= count
+        | &nbsp;artists/bands with the name&nbsp;
+        span(class="artist-name")= title
+      ol: each artist, index in results
+        - var country = artist.countryName ? '(' + artist.countryName + ')' : ''
+        li
+          a(href='/artist/' + artist.id) #{artist.name}
+          | &nbsp;
+          if country
+            span= country
+    else
+      h1 No results found.

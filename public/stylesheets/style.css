@@ -173,6 +173,7 @@ header .form-search {
   justify-content: space-around;
   align-items: stretch;
   align-content: center;
+/** Hide Last.fm link (it's a bit annoying) */
 /** Artist/badn name */
 /**
    * Main sections: media & info.
@@ -189,6 +190,9 @@ header .form-search {
    * Responsive YouTube videos as found on:
    * http://avexdesigns.com/responsive-youtube-embed/
    */
+}
+.profile a[href^='http://www.last.fm/music/'] {
+  display: none;
 }
 .profile h2 i {
   color: #95afba;
