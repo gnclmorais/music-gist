@@ -60,8 +60,14 @@ ol
  * Utils
  */
 .framer
-  width: 800px
+  width: 1000px
   margin: 0 auto
+
+  @media (max-width: 1000px)
+    width: 700px
+
+  @media (max-width: 700px)
+    width: 420px
 
 .content
   background: colour-main-light

@@ -51,8 +51,18 @@ ol {
   margin: 0;
 }
 .framer {
-  width: 800px;
+  width: 1000px;
   margin: 0 auto;
+}
+@media (max-width: 1000px) {
+  .framer {
+    width: 700px;
+  }
+}
+@media (max-width: 700px) {
+  .framer {
+    width: 420px;
+  }
 }
 .content {
   background: #fff;
@@ -165,12 +175,20 @@ form {
 }
 .wrapper-search {
   padding: 1em;
+/** Modifiers */
 }
 .wrapper-search h2 {
   color: #95afba;
 }
 .wrapper-search span {
   color: #333;
+}
+.wrapper-search.empty {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 2;
 }
 header h1 {
   float: left;
@@ -212,12 +230,27 @@ header .form-search {
 .profile .section-info {
   flex-grow: 1;
 }
-.profile .section-media {
-  padding-right: 10px;
-}
 .profile .section-info {
-  padding: 10px;
-  flex-shrink: 2;
+  padding: 2em;
+  flex-shrink: 5;
+}
+@media (max-width: 1000px) {
+  .profile .section-info {
+    padding: 1em;
+    flex-shrink: 2;
+  }
+}
+@media (max-width: 700px) {
+  .profile .section-info {
+    padding: 1em;
+    flex-shrink: 2;
+  }
+}
+@media (max-width: 420px) {
+  .profile .section-info {
+    padding: 1em;
+    flex-shrink: 2;
+  }
 }
 .profile .main-title .fa-user,
 .profile .main-title .fa-users {
@@ -234,7 +267,7 @@ header .form-search {
 .profile .cover {
   width: 100%;
   float: left;
-  margin: 0 1em 1em 0;
+  margin-bottom: 1em;
 }
 .profile .tags {
   overflow: hidden;

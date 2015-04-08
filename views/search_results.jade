@@ -4,8 +4,8 @@ block header
   include ./includes/header.jade
 
 block content
-  .wrapper-search
-    if count
+  if count
+    .wrapper-search
       h2 We found&nbsp;
         span(class="artist-number")= count
         | &nbsp;artists/bands with the name&nbsp;
@@ -18,5 +18,7 @@ block content
           | &nbsp;
           if country
             span= country
-    else
-      h1 No results found.
+  else
+    .wrapper-search.empty
+      h2 No results found for&nbsp;
+        span= title

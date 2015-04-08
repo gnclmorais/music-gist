@@ -36,7 +36,7 @@ router.get('/:name', function (req, res, next) {
       case 0:
         // TODO
       default:
-        // Get thr proper country names
+        // Get the proper country names
         artists = response.artists.map(function (artist) {
           if (artist.country) {
             var name = req.countries[artist.country].name;

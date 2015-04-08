@@ -42,11 +42,23 @@ header
     flex-grow: 1
 
   .section-media
-    padding-right: 10px
+    //padding-right: 1em
 
   .section-info
-    padding: 10px
-    flex-shrink: 2
+    padding: 2em
+    flex-shrink: 5
+
+    @media (max-width: 1000px)
+      padding: 1em
+      flex-shrink: 2
+
+    @media (max-width: 700px)
+      padding: 1em
+      flex-shrink: 2
+
+    @media (max-width: 420px)
+      padding: 1em
+      flex-shrink: 2
 
   /** Main title */
   .main-title
@@ -70,7 +82,7 @@ header
   .cover
     width: 100%
     float: left
-    margin: 0 1em 1em 0
+    margin-bottom: 1em
 
   .tags
     overflow: hidden
