@@ -11,26 +11,41 @@ block content
       .players
         ul(class='tabs')
           //- Show our preferred media players, only 1 active at a time
-          each val, index in play
-            li(class='#{index}')
-              a(href='#' class='tab-#{index} fa fa-#{index}')
+          each player in play
+            if player
+              li(class='#{player}')
+                a(href='#' class='tab-#{player} fa fa-#{player}')
           //- Loads YouTube search if doesn't have a YouTube channel
-          if !play.youtube
+          if !play[2]
             li(class='youtube-search')
               a(href='#' class='tab-youtube fa fa-youtube-play')
         .tab-content
-          if play.soundcloud
+          if play[0]
             .soundcloud
               iframe(id='iframe-soundcloud'
                      src='//w.soundcloud.com/player/?url=http://api.soundcloud.com')
-          div(id='ytplayer' class='youtube video-container')
-            iframe(id="ytplayer"
-                   type="text/html"
-                   width="720"
-                   height="405"
-                   src="https://www.youtube.com/embed/?listType=search&list=#{name}&autoplay=0&enablejsapi=1"
-                   frameborder="0"
-                   allowfullscreen)
+
+          //- No YouTube channel? Load YouTube search;
+          //- Otherwise, load player with YouTube channel
+          if !play[2]
+            div(id='ytplayer' class='youtube video-container')
+              iframe(id="ytplayer"
+                     type="text/html"
+                     width="720"
+                     height="405"
+                     src="https://www.youtube.com/embed/?listType=search&list=#{name}&autoplay=&enablejsapi=1"
+                     frameborder="0"
+                     allowfullscreen)
+          else
+            div(id='ytplayer' class='youtube video-container')
+              iframe(id="ytplayer"
+                     type="text/html"
+                     width="720"
+                     height="405"
+                     src="https://www.youtube.com/embed/?listType=user_uploads&list=#{play_urls[2]}&autoplay=1&enablejsapi=1"
+                     frameborder="0"
+                     allowfullscreen)
+
 
     //- Info section: Name, country, genres, bio...
     .section-info
@@ -111,17 +126,16 @@ block scripts
   script(src='/javascripts/zepto.min.js')
   script(src='/javascripts/soundcloud-widget.js')
   script.
-    var soundcloud = '#{play.soundcloud}';
-    var vimeo      = '#{play.vimeo}';
-    var myspace    = '#{play.myspace}';
-    var youtube    = '#{play.youtube}';
+    var soundcloud = '#{play_urls[0]}';
+    var vimeo      = '#{play_urls[1]}';
+    var youtube    = '#{play_urls[2]}';
 
     // SoundCloud player
     if (soundcloud) {
       var iframe = document.querySelector('#iframe-soundcloud');
       var widget = SC.Widget(iframe);
       widget.load(soundcloud, {
-        'auto_play': 0
+        'auto_play': 0  // autoplay
       });
     }
 

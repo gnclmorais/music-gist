@@ -10,6 +10,7 @@ block content
         span(class="artist-number")= count
         | &nbsp;artists/bands with the name&nbsp;
         span(class="artist-name")= title
+        | :
       ol: each artist, index in results
         - var country = artist.countryName ? '(' + artist.countryName + ')' : ''
         li

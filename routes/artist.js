@@ -53,20 +53,32 @@ router.get('/:mbid', function (req, res, next) {
       artistfm.type = brainz.type;
       artistfm.relations = brainz.relations;
 
-      // Trim the annoying dot at the end of the bio
+      // Trim the annoying link for Last.fm at the end
       if (artistfm.bio && artistfm.bio.summary) {
-        artistfm.bio.summary = artistfm.bio.summary.trim().slice(0, -1);
+        var lastLink = artistfm.bio.summary.lastIndexOf('<a href=');
+        if (lastLink > -1) {
+          artistfm.bio.summary = artistfm.bio.summary.slice(0, lastLink);
+        }
       }
 
       // Select playable links to create player(s)
-      artistfm.play = {};
+      artistfm.play = [];
+      artistfm.play_urls = [];
       artistfm.relations.map(function (link) {
         switch (link.type) {
-          case 'vimeo':
-          //case 'myspace':
-          case 'youtube':
           case 'soundcloud':
-            artistfm.play[link.type] = link.url.resource;
+            artistfm.play[0] = 'soundcloud';
+            artistfm.play_urls[0] = link.url.resource;
+            break;
+          case 'vimeo':
+            artistfm.play[1] = 'vimeo';
+            artistfm.play_urls[1] = link.url.resource;
+            break;
+          case 'youtube':
+            artistfm.play[2] = 'youtube';
+            // Special treatment for YouTube links:
+            artistfm.play_urls[2] = link.url.resource.split('/user/')[1];
+            break;
         }
       });
 

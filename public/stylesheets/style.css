@@ -1,8 +1,8 @@
-html,
-body {
+html {
   height: 100%;
 }
 body {
+  min-height: 100vh;
   margin: 0;
   font: 18px 'Source Sans Pro', Helvetica, Arial, sans-serif;
   font-weight: 300;
@@ -46,6 +46,9 @@ h2 {
 h2 {
   font-size: 2em;
   margin-bottom: 0.5em;
+}
+ol {
+  margin: 0;
 }
 .framer {
   width: 800px;
@@ -160,6 +163,15 @@ form {
 .home .form-search {
   margin-bottom: 3em;
 }
+.wrapper-search {
+  padding: 1em;
+}
+.wrapper-search h2 {
+  color: #95afba;
+}
+.wrapper-search span {
+  color: #333;
+}
 header h1 {
   float: left;
 }
@@ -190,9 +202,6 @@ header .form-search {
    * Responsive YouTube videos as found on:
    * http://avexdesigns.com/responsive-youtube-embed/
    */
-}
-.profile a[href^='http://www.last.fm/music/'] {
-  display: none;
 }
 .profile h2 i {
   color: #95afba;
