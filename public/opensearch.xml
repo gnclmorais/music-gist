@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Music Gist</ShortName>
+  <Description>Search for a new band or artist</Description>
+  <Url type="text/html" method="get" template="http://www.musicgist.com/search/{searchTerms}"/>
+  <Image width="16" height="16">http://www.musicgist.com/favicon.ico</Image>
+  <InputEncoding>UTF-8</InputEncoding>
+  <SearchForm>http://www.musicgist.com/</SearchForm>
+</OpenSearchDescription>
