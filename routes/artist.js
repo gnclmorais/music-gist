@@ -47,8 +47,6 @@ router.get('/:mbid', function (req, res, next) {
       var brainz = response[0];
       var lastfm = response[1];
 
-      console.log('lastfm:', lastfm);
-
       // Extend base object (Last.fm's) with MusicBrainz extra info
       var artistfm = lastfm.artist;
       artistfm.area = brainz.area;
