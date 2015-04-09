@@ -33,7 +33,7 @@ block content
                      type="text/html"
                      width="720"
                      height="405"
-                     src="https://www.youtube.com/embed/?listType=search&list=#{name}&autoplay=&enablejsapi=1"
+                     src="https://www.youtube.com/embed/?listType=search&list=#{name}&autoplay=1&enablejsapi=1"
                      frameborder="0"
                      allowfullscreen)
           else
@@ -135,7 +135,7 @@ block scripts
       var iframe = document.querySelector('#iframe-soundcloud');
       var widget = SC.Widget(iframe);
       widget.load(soundcloud, {
-        'auto_play': 0  // autoplay
+        'auto_play': 1  // autoplay
       });
     }
 
