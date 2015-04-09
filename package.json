@@ -2,7 +2,7 @@
   "name": "music-gist",
   "version": "0.0.1",
   "private": true,
-  "description": "Search for an artist or band and you’ll get the gist of it.",
+  "description": "Search for an artist or band and you'll get the gist of it.",
   "author": "Gonçalo Morais <gnclmorais@gmail.com>",
   "homepage": "https://github.com/gnclmorais/music-gist",
   "scripts": {

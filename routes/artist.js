@@ -34,11 +34,9 @@ router.get('/:mbid', function (req, res, next) {
           handlers: {
             success: function (data) {
               callback(null, data);
-              return data;
             },
             error: function (error) {
               callback(error);
-              return error;
             }
           }
         });
