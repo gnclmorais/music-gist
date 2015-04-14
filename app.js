@@ -8,7 +8,8 @@ var countries  = require('country-data').countries;
 var fs = require('fs');
 var nconf = require('nconf');
 
-nconf.file({ file: 'config.json' });
+//nconf.file({ file: 'config.json' });
+nconf.env();
 
 // get musicbrainz wrapper and initialise a client
 var nb = require('nodebrainz');
