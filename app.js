@@ -20,8 +20,8 @@ var mb = new nb({
 // get Last.fm wrapper and initialise a client
 var LastFmNode = require('lastfm').LastFmNode;
 var fm = new LastFmNode({
-  api_key: nconf.get('lastfm_apikey'),
-  secret: nconf.get('lastfm_secret'),
+  api_key: nconf.get('LASTFM_APIKEY'),
+  secret: nconf.get('LASTFM_SECRET'),
   useragent: 'music-gist/v0.0.1'
 });
 
