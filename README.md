@@ -1,5 +1,12 @@
-# music-gist
+# Music Gist
 Search for an artist or band and you’ll get the gist of it.
+
+## Motivation
+Tired of opening Last.fm, Wikipedia, SoundCloud, Bandcamp, YouTube, and a few
+others services when someone tells me about a new artist or band,
+I thought about doing a simple web app that allowed me to
+get to know a band in a few seconds. A small bio, genre tags and autoplay
+seemed to me the mandatory first features, from my personal experience.
 
 ## Audio priority
 1. Bandcamp
