@@ -1,5 +1,8 @@
 # Music Gist
-Search for an artist or band and you’ll get the gist of it.
+Search for an artist or band and you’ll get the gist of it. You’ll
+get genre tags, a short bio and music autoplay, all in a single
+search. A few seconds and you’ll know how interested you might be
+on the artist or band.
 
 ## Motivation
 Tired of opening Last.fm, Wikipedia, SoundCloud, Bandcamp, YouTube, and a few
